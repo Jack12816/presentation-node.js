@@ -1,0 +1,70 @@
+section
+
+  +titlePage('Erweiterungen, Eigenheiten, Fakten', 'fa-puzzle-piece')
+
+  section
+    +pageHeadline('Erweiterungen, Eigenheiten, Fakten', 'fa-puzzle-piece')
+
+    ul.space-between
+      li basiert auf Google’s V8 Javascript Engine
+      ul.space-between
+        li Incremental Garbage Collector
+        li V8 Assembler basiert auf dem Strongtalk Assembler
+        li Implementierung von ECMA-262, 5th edition
+      li ist zu Teilen in C++, aber größtenteils in Javascript selbst verfasst
+      ul.space-between
+        li JavaScript: 70,2%, C++: 23,9%, C: 2,7% Other: 3,1%
+
+  section
+    +pageHeadline('Erweiterungen, Eigenheiten, Fakten', 'fa-puzzle-piece')
+
+    ul.space-between
+      li nutzt libuv, ein abstrakter Platform Layer
+      li Dieser ermöglicht den Non-Blocking Event Loop
+      li bietet eine REPL (Read, Eval, Print - Loop, ähnlich Ruby oder Python) Umgebung
+
+section
+
+  section
+    +pageHeadline('Dateizugriffe', 'fa-file')
+
+    ul.space-between
+      li Node erweitert Javascript um die Fähigkeit Dateizugriffe zu realisieren
+      li File System Modul bietet (a)synchrone Varianten der Methoden
+      li Unterstützung von Streaming (für FS, Sockets, Posix Std-Channels uvm.)
+
+section
+
+  section
+    +pageHeadline('Non-Blocking Event Loop', 'fa-clock-o')
+
+    ul.space-between
+      li Ist bei Node.js fester Bestandteil des Systems
+      li Bietet die Möglichkeit Callbacks für spezifische Events zu feuern
+      li Events können sein:
+      ul.space-between
+        li POSIX Signals
+        li Timeouts und Intervals
+        li User-defined Events (EventEmitter)
+
+  section
+    +pageHeadline('Non-Blocking Event Loop', 'fa-clock-o')
+
+    ul.space-between
+      li Vergleichbare Systeme und Bibliotheken sind:
+      ul.space-between
+        li libevent für C
+        li EventMachine für Ruby
+        li vibe.d für D
+
+section
+
+  section
+    +pageHeadline('CommonJS', 'fa-file-text')
+
+    ul.space-between
+      li Dient der Standardisierung von Javascript außerhalb eines Browsers (Server-Side Javascript, oder für Desktopanwendungen)
+      li Node.js implementiert mehrere der CommonJS Vorschläge (Proposals)
+      ul.space-between
+        li Modules, Packages, Filesystem, Binary, Promises
+

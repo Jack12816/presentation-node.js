@@ -1,0 +1,91 @@
+section
+
+  +titlePage('Praktiken', 'fa-code')
+
+  section
+    +pageHeadline('Genereller Ablauf', 'fa-code')
+
+    ul.space-between.full-width
+      li bad practice (synchronen Code nach Möglichkeit vermeiden)
+        - var code = 'var data = readFromDatabase();\ndoSomethingWith(data);\ndoSomeThingUnrelated();'
+        pre
+          code.javascript #{code}
+
+      li good practice (asynchronen Code verwenden)
+        - var code = 'readFromDatabase(function(err, data) {\n    doSomethingWith(err, data);\n});\ndoSomeThingUnrelated();\n'
+        pre
+          code.javascript #{code}
+
+  section
+    +pageHeadline('Genereller Ablauf', 'fa-code')
+
+    ul.space-between.full-width
+
+      li best practice (Events und Ströme verwenden)
+        - var code = "var query = readFromDatabase();\n\nquery.on('err', doFancyErrorHandling);\nquery.on('data', doSomethingWith);\nquery.on('end', finalize);\n\ndoSomeThingUnrelated();"
+        pre
+          code.javascript #{code}
+
+section
+
+  section
+    +pageHeadline('Callback als Return', 'fa-code')
+
+    ul.space-between.full-width
+      li bad practice
+        - var code = 'if (err) {\n   return err;\n}'
+        pre
+          code.javascript #{code}
+
+      li good practice
+        - var code = 'if (err) {\n   return callback && callback(err);\n}   '
+        pre
+          code.javascript #{code}
+
+section
+
+  section
+    +pageHeadline('Asynchronous Error Handling', 'fa-code')
+
+    ul.space-between.full-width
+      li bad practice
+        - var code = 'function async(callback) {\r\n    process.nextTick(function(){\r\n           throw new Error(\"Something went wrong\");\r\n           callback && callback(); \/\/ Never executed\r\n    });\r\n}\r\n\r\ntry {\r\n    async(function(){\r\n           console.log(\"It worked!\");\r\n    });\r\n} catch(error) {\r\n    console.log(\"This is never printed.\");\r\n}'
+        pre
+          code.javascript #{code}
+
+  section
+    +pageHeadline('Asynchronous Error Handling', 'fa-code')
+
+    ul.space-between.full-width
+      li good practice
+        - var code = 'var emitter = new (require(\'events\').EventEmitter)();\n\nvar async = function () {\n\n    process.nextTick(function(){\n           emitter.emit(\'error\', new Error(\'Something went wrong\'));\n    });\n\n    return emitter;\n}\n\nvar event = async();\nevent.on(\'error\', function(error) {\n    console.error(error);\n});'
+        pre
+          code.javascript #{code}
+
+section
+
+  section
+    +pageHeadline('Synchronous Error Handling', 'fa-code')
+
+    ul.space-between.full-width
+      li good practice
+        - var code = 'var divideBy = function(a,b) {\r\n    if(0 === b) {\r\n           return new Error(\"Divide by zero!\");\r\n    }\r\n    return a \/ b;\r\n}\r\n\r\nvar value = divideBy(1,0);\r\nif(value instanceof Error) {\r\n    console.error(value);\r\n};'
+        pre
+          code.javascript #{code}
+
+section
+
+  section
+    +pageHeadline('Adapter', 'fa-code')
+
+    - var code = 'var Vendor = {\r\n    fixedMethod: function(arg1, arg2, arg3) {\r\n        console.log(arguments);\r\n    }\r\n}\r\n\r\nVendor.fixedMethod(\'defaultValue\', {test: 1}, [1, 2, 3]);'
+    pre.full-width
+      code.javascript #{code}
+
+  section
+    +pageHeadline('Adapter', 'fa-code')
+
+    - var code = 'var Adapter = {\r\n    fixedMethod: function() {\r\n\r\n        Vendor.fixedMethod\r\n              .bind(Vendor, \'defaultValue\')\r\n              .apply(Vendor, args);\r\n    }\r\n}\r\n\r\nAdapter.fixedMethod({test: 1}, [1, 2, 3]);'
+    pre.full-width
+      code.javascript #{code}
+

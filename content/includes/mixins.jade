@@ -1,0 +1,11 @@
+// Page Headline
+mixin pageHeadline(title, icon)
+  h2.page-title
+    span.fa(class="#{icon}")
+    |  #{title}
+
+mixin titlePage(title, icon, sectionClasses, sectionDataState)
+  section(class="#{sectionClasses}", data-state="#{sectionDataState}")
+    span.fa.fa-6x(class="#{icon}")
+    h1.margin-top-medium #{title}
+

@@ -1,0 +1,103 @@
+section
+
+  +titlePage('Vendor-Bibliotheken', 'fa-code-fork')
+
+  section
+    +pageHeadline('Express', 'fa-code-fork')
+
+    blockquote.full-width.
+      Express is a minimal and flexible node.js web application framework, providing
+      a robust set of features for building single and multi-page, and hybrid web
+      applications.
+
+  section
+    +pageHeadline('Express', 'fa-code-fork')
+
+    - var code = 'var express = require(\"express\");\r\nvar app = express();\r\n\r\napp.get(\'\/:name\', function(req, res){\r\n    res.send(\'Hallo \' + req.params.name);\r\n});\r\n\r\napp.listen(1337);'
+    pre.full-width
+      code.javascript #{code}
+
+section
+
+  section
+    +pageHeadline('Async', 'fa-code-fork')
+
+    ul.space-between.full-width
+      li bietet viele Funktionen zur Steuerung von asynchronen Abläufen
+      li Beispiele: map, reduce, each, filter, sortBy, some, series, parallel, times, etc.
+
+  section
+    +pageHeadline('Async', 'fa-code-fork')
+
+    ul.space-between.full-width
+      li map
+        - var code = 'async.map([1, 2, 3], function(id, callback) {\r\n   \/\/ do something\r\n   callback && callback();\r\n}, function(err, results) { ... });'
+        pre
+          code.javascript #{code}
+
+      li some
+        - var code = 'async.some([\'file1\',\'file2\',\'file3\'], fs.exists, function(result) {\r\n    \/\/ if result is true then at least one of the files exists\r\n});'
+        pre
+          code.javascript #{code}
+
+  section
+    +pageHeadline('Async', 'fa-code-fork')
+
+    ul.space-between.full-width
+      li each
+        - var code = 'async.each([1, 2, 3], function(number, callback) {\r\n\r\n    if (1 < number) {\r\n        return callback && callback();\r\n    }\r\n\r\n    callback && callback(\'Not all numbers are ok.\');\r\n\r\n}, function(err) {\r\n\r\n    if (err) {\r\n        return console.log(err);\r\n    }\r\n\r\n    console.log(\'Everything ok.\');\r\n});'
+        pre
+          code.javascript #{code}
+
+section
+
+  section
+    +pageHeadline('Jade', 'fa-code-fork')
+
+    ul.space-between.full-width
+      li leicht verständliche Template-Engine
+      li Verarbeitung von JavaScript auch im Dokument
+      li Beeinflusst von Ruby's Haml
+
+  section
+    +pageHeadline('Jade', 'fa-code-fork')
+
+    ul.space-between.full-width
+      li Jade
+        - var code = '- var pageTitle = \u2018Greppy Test\u2019;\r\n  .container\r\n    h1 #{pageTitle}'
+        pre
+          code.jade #{code}
+
+      li HTML
+        - var code = '<div class=\"container\">\r\n      <h1>Greppy Test<\/h1>\r\n<\/div>'
+        pre
+          code.html #{code}
+
+  section
+    +pageHeadline('Jade', 'fa-code-fork')
+
+    - var code = '- var isValid = false;\r\n  - if (isValid)\r\n    p Eishockey\r\n  - else\r\n    p Ein Fehler ist aufgetreten.'
+    pre
+      code.jade #{code}
+
+  section
+    +pageHeadline('Jade', 'fa-code-fork')
+
+    - var code = 'ul\r\n  li Test\r\n  li Blubb\r\nol\r\n  li Erstens\r\n  li Zweitens\r\n'
+    pre
+      code.jade #{code}
+
+  section
+    +pageHeadline('Jade', 'fa-code-fork')
+
+    - var code = 'table\r\n  tr\r\n    th Name\r\n    th Alter\r\n  tr\r\n    td Eddard\r\n    td 35\r\n  tr\r\n    td Catelyn\r\n    td 34'
+    pre
+      code.jade #{code}
+
+  section
+    +pageHeadline('Jade', 'fa-code-fork')
+
+    - var code = 'form(method=\u2019post\u2019, action=\u2019\/auth\/login\u2019)\r\n  input(type=\u2019text\u2019, name=\u2019username\u2019)\r\n  input(type=\u2019password\u2019, name=\u2019userpass\u2019)\r\n  a.btn.btn-primary#submitBtn Login'
+    pre
+      code.jade #{code}
+

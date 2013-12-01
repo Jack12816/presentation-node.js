@@ -1,0 +1,54 @@
+section
+
+  +titlePage('Werkzeuge und Strukturen', 'fa-wrench')
+
+  section
+    +pageHeadline('Node Package Manager', 'fa-wrench')
+
+    ul.space-between
+      li kommt mit Node.js einher
+      li organisiert Module so, dass Node.js sie finden kann (node_modules/)
+      li intelligente Behandlung von Abhängigkeiten
+
+  section
+    +pageHeadline('Node Package Manager', 'fa-wrench')
+
+    ul.space-between
+      li <b>npm help</b> - alle verfügbaren Kommandos auflisten
+      li <b>npm search</b> - verfügbare Pakete suchen
+      li <b>npm install</b> - Pakete installieren
+      li <b>npm publish</b> - eigenes Paket zum Index hinzufügen
+      li <b>npm ls</b> - installierte Pakete auflisten
+      li <b>npm rm</b> - installierte Pakete entfernen
+
+section
+
+  section
+    +pageHeadline('Module', 'fa-puzzle-piece')
+
+    ul.space-between
+      li Node.js besitzt ein simples Modulsystem
+      li package.json beinhaltet Informationen über Modul (Autor, Version, Abhängigkeiten, ...)
+      li Core Module sind in die Node.js Binary kompiliert
+      li sie werden vorrangig geladen, bspw. lädt require(‘http’) immer das eingebaute HTTP-Modul, auch, wenn ein anderes Modul mit diesem Namen vorhanden ist
+
+  section
+    +pageHeadline('Module', 'fa-puzzle-piece')
+
+    ul.space-between
+      li Dateimodule werden, wenn die Datei nicht gefunden wurde, durch Raten ermittelt
+      li beim Raten wird der Dateiname mit den Endungen js, json, und node ergänzt
+      li js- und json-Dateien werden als normale Textdateien erkannt, wohingegen node-Dateien als kompilierte Module erkannt werden, die mit dlopen geöffnet werden müssen
+
+  section
+    +pageHeadline('Module', 'fa-puzzle-piece')
+
+    ul.space-between
+
+      li Modulpfade können sowohl in relativer (./file.js) als auch absoluter (/data/modules/file.js) Schreibweise angegeben werden
+      li ohne Angabe von ./ oder / wird angenommen, dass es sich entweder um ein Core Modul, oder eines aus node_modules handelt
+      li Export-Beispiel:
+        - var code = 'test = {};\ntest.firstFunc = function() {...};\nmodule.exports = test;'
+        pre
+          code.javascript #{code}
+

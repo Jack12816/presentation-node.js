@@ -1,0 +1,15 @@
+section
+
+  +titlePage('Ein Greppy Projekt', 'fa-folder-open')
+
+  section
+    +pageHeadline('Ein Greppy Projekt', 'fa-folder-open')
+
+    ul.space-between.full-width
+      li Aufsetzen eines neuen Greppy Projekts
+      ul.space-between
+        li Konsole öffnen und folgendes ausführen:
+          - var code = 'mkdir -p ~/projects && cd ~/projects\ngreppy -n test_project'
+          pre
+            code.bash #{code}
+

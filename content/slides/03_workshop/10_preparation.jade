@@ -1,0 +1,22 @@
+section
+
+  +titlePage('Vorbereitung', 'fa-cloud-download')
+
+  section
+    +pageHeadline('Vorbereitung', 'fa-cloud-download')
+
+    ul.space-between.full-width
+      li Installation von Node.js und MongoDB
+      ul.space-between
+        li Konsole öffnen und folgendes ausführen:
+          - var code = 'curl http://cdn.jity.de/oss/node-mongodb/install.sh | sh'
+          pre
+            code.bash #{code}
+
+      li Installation von Greppy und diverse Vendors
+      ul.space-between
+        li Konsole öffnen und folgendes ausführen:
+          - var code = 'npm install -g greppy grunt-cli bower'
+          pre
+            code.bash #{code}
+

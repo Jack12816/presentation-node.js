@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js</title>
+    <meta name="description" content="Node.js">
+    <meta name="author" content="Hermann Mayer">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
+    <link id="theme" rel="stylesheet" href="css/theme.min.css">
+    <link rel="stylesheet" href="css/custom.min.css">
+    <!-- For syntax highlighting-->
+    <link rel="stylesheet" href="components/reveal.js/lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet-->
+    <script>
+      document.write( '<link rel="stylesheet" href="components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+      
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body><a target="_blank" href="https://github.com/Jack12816/presentation-node.js" class="forkme"><img id="forkme-img" src="img/forkme.png" alt="Fork me on GitHub"></a>
+    <div class="reveal theme-font-josefine">
+      <div class="slides">
+        <!-- Page Headline-->
+        <section>
+          <section>
+            <h1>Node.js und Greppy</h1>
+            <div class="divider">
+              <hr class="left"><span class="h3">von</span>
+              <hr class="right">
+            </div>
+            <h2>Hermann Mayer</h2>
+          </section>
+          <section><span class="fa fa-coffee fa-8x"></span><br><br>
+            <h1><small>1st Step:</small> Kaffee besorgen</h1>
+          </section>
+          <section><span class="fa fa-desktop fa-8x"></span><br><br>
+            <h1><small>2nd Step:</small> Computer<br>&nbsp;&nbsp;&nbsp;&nbsp;starten</h1>
+          </section>
+          <section><span class="fa fa-eye fa-8x"></span><br><br>
+            <h1><small>3rd Step:</small> Relaxen und watchen das blinkenlichten</h1>
+          </section>
+        </section>
+        <section>
+          <h1><img src="img/node.js.png" alt="Node.js"></h1>
+        </section>
+        <section>
+          <h2 class="page-title">Gliederung <small>Node.js</small></h2>
+          <ol>
+            <li>Geschichte</li>
+            <li>Vorteile</li>
+            <li>Nachteile</li>
+            <li>Erweiterungen, Eigenheiten, Fakten</li>
+            <li>Werkzeuge und Strukturen</li>
+            <li>Praktiken</li>
+            <li>Vendor-Bibliotheken</li>
+            <li>Quellen</li>
+          </ol>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-book"></span>
+                    <h1 class="margin-top-medium">Geschichte</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-book"></span> Geschichte</h2>
+            <ul class="space-between">
+              <li>Vorstellung <b>2009</b> auf JSConf</li>
+              <li>ab <b>2012</b> Verwendung bei Unternehmen (Microsoft, eBay, LinkedIn, The New York Times, Yahoo!, etc.)</li>
+              <li><b>Ziel:</b> Framework zur einfachen Erstellung von leicht skalierbaren Netzwerkanwendungen</li>
+              <li>über Googles <b>V8</b> betrieben</li>
+              <li>Eventgesteuerte Programmierung</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-plus-square"></span>
+                    <h1 class="margin-top-medium">Vorteile</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-plus-square"></span> Vorteile</h2>
+            <ul class="space-between">
+              <li>Moderne API, keine Altlasten</li>
+              <li>Geschwindigkeit durch Asynchronizität und Parallelität</li>
+              <li>Cluster/Cloud Applikationen leicht implementierbar</li>
+              <li>Skalierbarkeit: vertikal und horizontal</li>
+              <li>Einfache Handhabung von Multithreading</li>
+              <li>Kein externer Server-Stack (im Gegensatz z.B.: Apache httpd, Apache Tomcat oder nginx)</li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-plus-square"></span> Vorteile</h2>
+            <ul class="space-between">
+              <li>Applikation beinhaltet Server</li>
+              <li>Viele Vendor Bibliotheken (async, moment, express)</li>
+              <li>Schnelle Entwicklung von Applikationen jeder Größe</li>
+              <ul class="space-between">
+                <li>Geringer Konfigurationsaufwand</li>
+                <li>Geringe Fehlerhäufigkeit</li>
+                <li>Konzentration auf Kernproblematik</li>
+              </ul>
+              <li>Alle Vorteile eines Applikationsservers</li>
+              <ul class="space-between">
+                <li>Kein Bootstrap pro Request (im Gegensatz zu PHP)</li>
+                <li>Der Bootstrap erfolgt einmalig bei Serverstart</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-plus-square"></span> Vorteile</h2>
+            <ul class="space-between">
+              <li>Javascript im Front- und Backend (Applikation, Persistenzschicht)</li>
+              <li>Keine Überladenen Frameworks wie PHP’s Zend Framework oder Symfony</li>
+              <li>Native Bindings (C/C++)</li>
+              <li>Mit Node kein Load :)</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-minus-square"></span>
+                    <h1 class="margin-top-medium">Nachteile</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-minus-square"></span> Nachteile</h2>
+            <ul class="space-between">
+              <li>Einführung von neuem Personal gestaltet sich schwierig</li>
+              <li>Noch junger aber aufstrebender Trend (Bleeding Edge)</li>
+              <li>Hohe Qualitätsansprüche an Entwickler, ähnlich Ruby oder Haskell</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-puzzle-piece"></span>
+                    <h1 class="margin-top-medium">Erweiterungen, Eigenheiten, Fakten</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-puzzle-piece"></span> Erweiterungen, Eigenheiten, Fakten</h2>
+            <ul class="space-between">
+              <li>basiert auf Google’s V8 Javascript Engine</li>
+              <ul class="space-between">
+                <li>Incremental Garbage Collector</li>
+                <li>V8 Assembler basiert auf dem Strongtalk Assembler</li>
+                <li>Implementierung von ECMA-262, 5th edition</li>
+              </ul>
+              <li>ist zu Teilen in C++, aber größtenteils in Javascript selbst verfasst</li>
+              <ul class="space-between">
+                <li>JavaScript: 70,2%, C++: 23,9%, C: 2,7% Other: 3,1%</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-puzzle-piece"></span> Erweiterungen, Eigenheiten, Fakten</h2>
+            <ul class="space-between">
+              <li>nutzt libuv, ein abstrakter Platform Layer</li>
+              <li>Dieser ermöglicht den Non-Blocking Event Loop</li>
+              <li>bietet eine REPL (Read, Eval, Print - Loop, ähnlich Ruby oder Python) Umgebung</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-file"></span> Dateizugriffe</h2>
+            <ul class="space-between">
+              <li>Node erweitert Javascript um die Fähigkeit Dateizugriffe zu realisieren</li>
+              <li>File System Modul bietet (a)synchrone Varianten der Methoden</li>
+              <li>Unterstützung von Streaming (für FS, Sockets, Posix Std-Channels uvm.)</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-clock-o"></span> Non-Blocking Event Loop</h2>
+            <ul class="space-between">
+              <li>Ist bei Node.js fester Bestandteil des Systems</li>
+              <li>Bietet die Möglichkeit Callbacks für spezifische Events zu feuern</li>
+              <li>Events können sein:</li>
+              <ul class="space-between">
+                <li>POSIX Signals</li>
+                <li>Timeouts und Intervals</li>
+                <li>User-defined Events (EventEmitter)</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-clock-o"></span> Non-Blocking Event Loop</h2>
+            <ul class="space-between">
+              <li>Vergleichbare Systeme und Bibliotheken sind:</li>
+              <ul class="space-between">
+                <li>libevent für C</li>
+                <li>EventMachine für Ruby</li>
+                <li>vibe.d für D</li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-file-text"></span> CommonJS</h2>
+            <ul class="space-between">
+              <li>Dient der Standardisierung von Javascript außerhalb eines Browsers (Server-Side Javascript, oder für Desktopanwendungen)</li>
+              <li>Node.js implementiert mehrere der CommonJS Vorschläge (Proposals)</li>
+              <ul class="space-between">
+                <li>Modules, Packages, Filesystem, Binary, Promises</li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-wrench"></span>
+                    <h1 class="margin-top-medium">Werkzeuge und Strukturen</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-wrench"></span> Node Package Manager</h2>
+            <ul class="space-between">
+              <li>kommt mit Node.js einher</li>
+              <li>organisiert Module so, dass Node.js sie finden kann (node_modules/)</li>
+              <li>intelligente Behandlung von Abhängigkeiten</li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-wrench"></span> Node Package Manager</h2>
+            <ul class="space-between">
+              <li><b>npm help</b> - alle verfügbaren Kommandos auflisten</li>
+              <li><b>npm search</b> - verfügbare Pakete suchen</li>
+              <li><b>npm install</b> - Pakete installieren</li>
+              <li><b>npm publish</b> - eigenes Paket zum Index hinzufügen</li>
+              <li><b>npm ls</b> - installierte Pakete auflisten</li>
+              <li><b>npm rm</b> - installierte Pakete entfernen</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-puzzle-piece"></span> Module</h2>
+            <ul class="space-between">
+              <li>Node.js besitzt ein simples Modulsystem</li>
+              <li>package.json beinhaltet Informationen über Modul (Autor, Version, Abhängigkeiten, ...)</li>
+              <li>Core Module sind in die Node.js Binary kompiliert</li>
+              <li>sie werden vorrangig geladen, bspw. lädt require(‘http’) immer das eingebaute HTTP-Modul, auch, wenn ein anderes Modul mit diesem Namen vorhanden ist</li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-puzzle-piece"></span> Module</h2>
+            <ul class="space-between">
+              <li>Dateimodule werden, wenn die Datei nicht gefunden wurde, durch Raten ermittelt</li>
+              <li>beim Raten wird der Dateiname mit den Endungen js, json, und node ergänzt</li>
+              <li>js- und json-Dateien werden als normale Textdateien erkannt, wohingegen node-Dateien als kompilierte Module erkannt werden, die mit dlopen geöffnet werden müssen</li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-puzzle-piece"></span> Module</h2>
+            <ul class="space-between">
+              <li>Modulpfade können sowohl in relativer (./file.js) als auch absoluter (/data/modules/file.js) Schreibweise angegeben werden</li>
+              <li>ohne Angabe von ./ oder / wird angenommen, dass es sich entweder um ein Core Modul, oder eines aus node_modules handelt</li>
+              <li>Export-Beispiel:
+                <pre><code class="javascript">test = {};
+test.firstFunc = function() {...};
+module.exports = test;</code></pre>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-code"></span>
+                    <h1 class="margin-top-medium">Praktiken</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Genereller Ablauf</h2>
+            <ul class="space-between full-width">
+              <li>bad practice (synchronen Code nach Möglichkeit vermeiden)
+                <pre><code class="javascript">var data = readFromDatabase();
+doSomethingWith(data);
+doSomeThingUnrelated();</code></pre>
+              </li>
+              <li>good practice (asynchronen Code verwenden)
+                <pre><code class="javascript">readFromDatabase(function(err, data) {
+    doSomethingWith(err, data);
+});
+doSomeThingUnrelated();
+</code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Genereller Ablauf</h2>
+            <ul class="space-between full-width">
+              <li>best practice (Events und Ströme verwenden)
+                <pre><code class="javascript">var query = readFromDatabase();
+
+query.on('err', doFancyErrorHandling);
+query.on('data', doSomethingWith);
+query.on('end', finalize);
+
+doSomeThingUnrelated();</code></pre>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Callback als Return</h2>
+            <ul class="space-between full-width">
+              <li>bad practice
+                <pre><code class="javascript">if (err) {
+   return err;
+}</code></pre>
+              </li>
+              <li>good practice
+                <pre><code class="javascript">if (err) {
+   return callback &amp;&amp; callback(err);
+}   </code></pre>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Asynchronous Error Handling</h2>
+            <ul class="space-between full-width">
+              <li>bad practice
+                <pre><code class="javascript">function async(callback) {
+    process.nextTick(function(){
+           throw new Error(&quot;Something went wrong&quot;);
+           callback &amp;&amp; callback(); // Never executed
+    });
+}
+
+try {
+    async(function(){
+           console.log(&quot;It worked!&quot;);
+    });
+} catch(error) {
+    console.log(&quot;This is never printed.&quot;);
+}</code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Asynchronous Error Handling</h2>
+            <ul class="space-between full-width">
+              <li>good practice
+                <pre><code class="javascript">var emitter = new (require('events').EventEmitter)();
+
+var async = function () {
+
+    process.nextTick(function(){
+           emitter.emit('error', new Error('Something went wrong'));
+    });
+
+    return emitter;
+}
+
+var event = async();
+event.on('error', function(error) {
+    console.error(error);
+});</code></pre>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Synchronous Error Handling</h2>
+            <ul class="space-between full-width">
+              <li>good practice
+                <pre><code class="javascript">var divideBy = function(a,b) {
+    if(0 === b) {
+           return new Error(&quot;Divide by zero!&quot;);
+    }
+    return a / b;
+}
+
+var value = divideBy(1,0);
+if(value instanceof Error) {
+    console.error(value);
+};</code></pre>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Adapter</h2>
+            <pre class="full-width"><code class="javascript">var Vendor = {
+    fixedMethod: function(arg1, arg2, arg3) {
+        console.log(arguments);
+    }
+}
+
+Vendor.fixedMethod('defaultValue', {test: 1}, [1, 2, 3]);</code></pre>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code"></span> Adapter</h2>
+            <pre class="full-width"><code class="javascript">var Adapter = {
+    fixedMethod: function() {
+
+        Vendor.fixedMethod
+              .bind(Vendor, 'defaultValue')
+              .apply(Vendor, args);
+    }
+}
+
+Adapter.fixedMethod({test: 1}, [1, 2, 3]);</code></pre>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-code-fork"></span>
+                    <h1 class="margin-top-medium">Vendor-Bibliotheken</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Express</h2>
+            <blockquote class="full-width">
+              Express is a minimal and flexible node.js web application framework, providing
+              a robust set of features for building single and multi-page, and hybrid web
+              applications.
+              
+            </blockquote>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Express</h2>
+            <pre class="full-width"><code class="javascript">var express = require(&quot;express&quot;);
+var app = express();
+
+app.get('/:name', function(req, res){
+    res.send('Hallo ' + req.params.name);
+});
+
+app.listen(1337);</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Async</h2>
+            <ul class="space-between full-width">
+              <li>bietet viele Funktionen zur Steuerung von asynchronen Abläufen</li>
+              <li>Beispiele: map, reduce, each, filter, sortBy, some, series, parallel, times, etc.</li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Async</h2>
+            <ul class="space-between full-width">
+              <li>map
+                <pre><code class="javascript">async.map([1, 2, 3], function(id, callback) {
+   // do something
+   callback &amp;&amp; callback();
+}, function(err, results) { ... });</code></pre>
+              </li>
+              <li>some
+                <pre><code class="javascript">async.some(['file1','file2','file3'], fs.exists, function(result) {
+    // if result is true then at least one of the files exists
+});</code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Async</h2>
+            <ul class="space-between full-width">
+              <li>each
+                <pre><code class="javascript">async.each([1, 2, 3], function(number, callback) {
+
+    if (1 &lt; number) {
+        return callback &amp;&amp; callback();
+    }
+
+    callback &amp;&amp; callback('Not all numbers are ok.');
+
+}, function(err) {
+
+    if (err) {
+        return console.log(err);
+    }
+
+    console.log('Everything ok.');
+});</code></pre>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Jade</h2>
+            <ul class="space-between full-width">
+              <li>leicht verständliche Template-Engine</li>
+              <li>Verarbeitung von JavaScript auch im Dokument</li>
+              <li>Beeinflusst von Ruby's Haml</li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Jade</h2>
+            <ul class="space-between full-width">
+              <li>Jade
+                <pre><code class="jade">- var pageTitle = ‘Greppy Test’;
+  .container
+    h1 #{pageTitle}</code></pre>
+              </li>
+              <li>HTML
+                <pre><code class="html">&lt;div class=&quot;container&quot;&gt;
+      &lt;h1&gt;Greppy Test&lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Jade</h2>
+            <pre><code class="jade">- var isValid = false;
+  - if (isValid)
+    p Eishockey
+  - else
+    p Ein Fehler ist aufgetreten.</code></pre>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Jade</h2>
+            <pre><code class="jade">ul
+  li Test
+  li Blubb
+ol
+  li Erstens
+  li Zweitens
+</code></pre>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Jade</h2>
+            <pre><code class="jade">table
+  tr
+    th Name
+    th Alter
+  tr
+    td Eddard
+    td 35
+  tr
+    td Catelyn
+    td 34</code></pre>
+          </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-code-fork"></span> Jade</h2>
+            <pre><code class="jade">form(method=’post’, action=’/auth/login’)
+  input(type=’text’, name=’username’)
+  input(type=’password’, name=’userpass’)
+  a.btn.btn-primary#submitBtn Login</code></pre>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-question-circle"></span>
+                    <h1 class="margin-top-medium">Fragen</h1>
+                  </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-globe"></span>
+                    <h1 class="margin-top-medium">Quellen</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-globe"></span> Quellen</h2>
+            <ul class="space-between full-width">
+              <li>http://nodejs.org/</li>
+              <li>http://en.wikipedia.org/wiki/Nodejs</li>
+              <li>http://code.google.com/p/v8/</li>
+              <li>http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29</li>
+              <li>http://expressjs.com/</li>
+              <li>https://github.com/caolan/async</li>
+              <li>http://jade-lang.com/</li>
+              <li>http://wiki.commonjs.org/wiki/CommonJS</li>
+            </ul>
+          </section>
+        </section>
+        <section data-state="greppy" class="greppy"><img src="img/greppy.png">
+          <h1>Greppy</h1>
+        </section>
+        <section data-state="greppy" class="greppy">
+          <h2 class="page-title">Gliederung <small>Greppy</small></h2>
+          <ol>
+            <li>Über Greppy</li>
+            <li>Features</li>
+            <li>Einsatzbereich</li>
+            <li>Quellen</li>
+          </ol>
+        </section>
+        <section data-state="greppy" class="greppy">
+                  <section data-state="greppy" class="greppy"><span class="fa fa-6x fa-cloud"></span>
+                    <h1 class="margin-top-medium">Über Greppy</h1>
+                  </section>
+          <section data-state="greppy" class="greppy">
+                    <h2 class="page-title"><span class="fa fa-cloud"></span> Über Greppy</h2>
+            <blockquote class="full-width">
+              Greppy is a top layer framework utilising the Express framework. Greppy extends
+              the functionality of Express and increases the reuseability for common parts of
+              your application. Furthermore it standardizes an application directory
+              structure which helps you to manage large code bases.
+              
+            </blockquote>
+          </section>
+        </section>
+        <section data-state="greppy" class="greppy">
+                  <section data-state="greppy" class="greppy"><span class="fa fa-6x fa-magic"></span>
+                    <h1 class="margin-top-medium">Features</h1>
+                  </section>
+          <section data-state="greppy" class="greppy">
+                    <h2 class="page-title"><span class="fa fa-magic"></span> Features</h2>
+            <ul class="space-between">
+              <li>Eine wohldefinierte Applikationsstruktur</li>
+              <li>MVC, Kontexte und Module</li>
+              <ul class="space-between">
+                <li>Kontexte umfassen Module, Module enthalten MVC</li>
+              </ul>
+              <li>Abstrakte Persistenzschicht</li>
+              <ul class="space-between">
+                <li>Einheitliches Bootstrapping von MySQL und MongoDB Verbindungen</li>
+                <li>Auftrennung von Modellen, Migrationen und Fixtures</li>
+              </ul>
+            </ul>
+          </section>
+          <section data-state="greppy" class="greppy">
+                    <h2 class="page-title"><span class="fa fa-magic"></span> Features</h2>
+            <ul class="space-between">
+              <li>Leicht zu erweitern und zu konfigurieren</li>
+              <ul class="space-between">
+                <li>Unterstützung von Convention-over-Configuration</li>
+                <li>Einfache Möglichkeiten das Framework zu erweitern</li>
+              </ul>
+              <li>Belast- und Skalierbar</li>
+              <ul class="space-between">
+                <li>Cloud/Cluster Software mit Multi-Threading - out of the box</li>
+                <li>Hochverfügbarkeit durch Master/Worker Pattern</li>
+              </ul>
+            </ul>
+          </section>
+          <section data-state="greppy" class="greppy">
+                    <h2 class="page-title"><span class="fa fa-magic"></span> Features</h2>
+            <ul class="space-between">
+              <li>Rapid Prototyping</li>
+              <ul class="space-between">
+                <li>Generierung von Grundgerüsten, sogar ganze CRUD Controller</li>
+                <li>Schnellere Entwicklung und somit schnellere Resultate</li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section data-state="greppy" class="greppy">
+                  <section data-state="greppy" class="greppy"><span class="fa fa-6x fa-sitemap"></span>
+                    <h1 class="margin-top-medium">Einsatzbereich</h1>
+                  </section>
+          <section data-state="greppy" class="greppy">
+                    <h2 class="page-title"><span class="fa fa-sitemap"></span> Einsatzbereich</h2>
+            <ul class="space-between">
+              <li>Verteilte Anwendungen</li>
+              <li>Hochverfügbare Systeme</li>
+              <li>Umgang mit Big Data</li>
+              <li>Hochperformante System</li>
+            </ul>
+          </section>
+        </section>
+        <section data-state="greppy" class="greppy">
+                  <section data-state="greppy" class="greppy"><span class="fa fa-6x fa-question-circle"></span>
+                    <h1 class="margin-top-medium">Fragen</h1>
+                  </section>
+        </section>
+        <section data-state="greppy" class="greppy">
+                  <section data-state="greppy" class="greppy"><span class="fa fa-6x fa-globe"></span>
+                    <h1 class="margin-top-medium">Quellen</h1>
+                  </section>
+          <section data-state="greppy" class="greppy">
+                    <h2 class="page-title"><span class="fa fa-globe"></span> Quellen</h2>
+            <ul class="space-between full-width">
+              <li>http://greppy.org/</li>
+              <li>http://greppy.org/docs/guide.html</li>
+              <li>https://github.com/Jack12816/greppy</li>
+              <li>https://github.com/Jack12816/greppy-frontend</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-bug"></span>
+                    <h1 class="margin-top-medium">Workshop</h1>
+                  </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-cloud-download"></span>
+                    <h1 class="margin-top-medium">Vorbereitung</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-cloud-download"></span> Vorbereitung</h2>
+            <ul class="space-between full-width">
+              <li>Installation von Node.js und MongoDB</li>
+              <ul class="space-between">
+                <li>Konsole öffnen und folgendes ausführen:
+                  <pre><code class="bash">curl http://cdn.jity.de/oss/node-mongodb/install.sh | sh</code></pre>
+                </li>
+              </ul>
+              <li>Installation von Greppy und diverse Vendors</li>
+              <ul class="space-between">
+                <li>Konsole öffnen und folgendes ausführen:
+                  <pre><code class="bash">npm install -g greppy grunt-cli bower</code></pre>
+                </li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-folder-open"></span>
+                    <h1 class="margin-top-medium">Ein Greppy Projekt</h1>
+                  </section>
+          <section>
+                    <h2 class="page-title"><span class="fa fa-folder-open"></span> Ein Greppy Projekt</h2>
+            <ul class="space-between full-width">
+              <li>Aufsetzen eines neuen Greppy Projekts</li>
+              <ul class="space-between">
+                <li>Konsole öffnen und folgendes ausführen:
+                  <pre><code class="bash">mkdir -p ~/projects &amp;&amp; cd ~/projects
+greppy -n test_project</code></pre>
+                </li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-thumbs-up"></span>
+                    <h1 class="margin-top-medium">Vielen Dank für Ihre Aufmerksamkeit</h1>
+                  </section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-flask"></span>
+                    <h1 class="margin-top-medium">Experimentiert!</h1>
+                  </section>
+                  <section data-state="undefined" class="undefined"><span class="fa fa-6x fa-bullhorn"></span>
+                    <h1 class="margin-top-medium">Verbreitet es!</h1>
+                  </section>
+          <section>
+            <table class="full-width">
+              <tr>
+                <td><img width="300px" src="img/node.js.png" alt="Node.js" class="center"></td>
+                <td><img width="300px" src="img/greppy.png" class="center"></td>
+              </tr>
+              <tr>
+                <td>
+                  <h3><a href="http://nodejs.org" target="_blank">nodejs.org</a></h3>
+                </td>
+                <td>
+                  <h3><a href="http://greppy.org" target="_blank">greppy.org</a></h3>
+                </td>
+              </tr>
+            </table>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/reveal.js/lib/js/head.min.js"></script>
+    <script src="components/reveal.js/js/reveal.min.js"></script>
+    <script src="js/custom.min.js"></script>
+  </body>
+</html>
