@@ -1,9 +1,10 @@
 .PHONY: all build clean install serve
 
-install: build
+install:
 	@npm install
 	@bower install --allow-root
 	@cd public/components/reveal.js && npm install
+	@make build
 
 clean:
 	@rm -rf build/*
