@@ -49,9 +49,21 @@ html.greppy .page-title {
     border-bottom: 1px solid #ffffff !important;
 }
 
+html.greppy a, a:focus, a:visited, a:link {
+    color: #ffffff;
+}
+
+html.greppy a:hover {
+    color: rgb(210, 216, 186);
+}
+
 /**
  * Common Style
  */
+.fa {
+    font-family: FontAwesome !important;
+}
+
 .center {
     text-align: center;
 }
